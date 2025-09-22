@@ -34,6 +34,16 @@ public class UIManager : MonoBehaviour
 
 
     }
+
+    public void DeathMenu(string sceneName)
+    {
+
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
+
+
+
+    }
     public void RestartLevel()
     {
 
