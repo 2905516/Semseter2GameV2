@@ -44,6 +44,42 @@ public class UIManager : MonoBehaviour
 
 
     }
+    public void Page1(string sceneName)
+    {
+
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
+
+
+
+    }
+    public void Page2(string sceneName)
+    {
+
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
+
+
+
+    }
+    public void Page3(string sceneName)
+    {
+
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
+
+
+
+    }
+    public void Page4(string sceneName)
+    {
+
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
+
+
+
+    }
     public void RestartLevel()
     {
 
