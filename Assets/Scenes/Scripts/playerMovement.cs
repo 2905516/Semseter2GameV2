@@ -126,6 +126,9 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
+
+            //pause jump sound effect
+
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
         }

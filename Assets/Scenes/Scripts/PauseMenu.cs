@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject SettingsM;
 
     public static bool isPaused = false;
 
@@ -11,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
+        SettingsM.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,6 +34,9 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        //pause game sound effect
+        SoundEffectManager.Play("Pause");
+     
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         isPaused = true;
@@ -39,6 +44,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        SoundEffectManager.Play("Button");
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         isPaused = false;
@@ -46,7 +52,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu(string sceneName)
     {
-
+        SoundEffectManager.Play("Button");
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 
@@ -55,18 +61,21 @@ public class PauseMenu : MonoBehaviour
     }
     public void RestartLevel()
     {
-
+        SoundEffectManager.Play("Button");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
 
 
     }
 
-    public void Options(string sceneName)
+    public void Settings(string sceneName)
     {
 
-        SceneManager.LoadScene(sceneName);
-        Time.timeScale = 1f;
+        SoundEffectManager.Play("Button");
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(false);
+        isPaused = false;
+        SettingsM.SetActive(true);
 
 
     }
@@ -74,7 +83,31 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit()
     {
+        SoundEffectManager.Play("Button");
         Application.Quit();
+
+    }
+
+    public void SBack()
+    {
+        SoundEffectManager.Play("Button");
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+        isPaused = true;
+        SettingsM.SetActive(false);
+        
+
+
+    }
+    public void PBack()
+    {
+        SoundEffectManager.Play("Button");
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+        isPaused = false;
+        SettingsM.SetActive(false);
+
+
 
     }
 }
