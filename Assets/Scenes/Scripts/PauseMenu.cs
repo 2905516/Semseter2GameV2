@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject SettingsM;
 
-    public static bool isPaused = false;
+    public bool isPaused = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +34,9 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         //pause game sound effect
         SoundEffectManager.Play("Pause");
      
@@ -44,9 +47,16 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         SoundEffectManager.Play("Button");
+
         Time.timeScale = 1f;
+
+        SettingsM.SetActive(false);
         pauseMenu.SetActive(false);
+        
         isPaused = false;
     }
 
@@ -68,13 +78,12 @@ public class PauseMenu : MonoBehaviour
 
     }
 
-    public void Settings(string sceneName)
+    public void Settings()
     {
 
         SoundEffectManager.Play("Button");
         Time.timeScale = 0f;
         pauseMenu.SetActive(false);
-        isPaused = false;
         SettingsM.SetActive(true);
 
 
@@ -93,7 +102,6 @@ public class PauseMenu : MonoBehaviour
         SoundEffectManager.Play("Button");
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
-        isPaused = true;
         SettingsM.SetActive(false);
         
 
@@ -101,6 +109,9 @@ public class PauseMenu : MonoBehaviour
     }
     public void PBack()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         SoundEffectManager.Play("Button");
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);

@@ -20,6 +20,8 @@ public class FPController : MonoBehaviour
     private Vector3 velocity;
     private float verticalRotation = 0f;
 
+    public PauseMenu pm;
+
 
     private void Awake()
     {
@@ -31,7 +33,13 @@ public class FPController : MonoBehaviour
 
     private void Update()
     {
-       // HandleMovement();
+        // HandleMovement();
+
+        /*if (pm.isPaused)
+        { 
+            return;
+        } */
+
         HandleLook();
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -61,7 +69,8 @@ public class FPController : MonoBehaviour
     } */
 
     public void HandleLook()
-    {
+    {   
+
         float mouseX = lookInput.x * lookSensitivity;
         float mouseY = lookInput.y * lookSensitivity;
 
