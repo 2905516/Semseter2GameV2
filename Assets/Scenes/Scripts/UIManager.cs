@@ -5,13 +5,25 @@ public class UIManager : MonoBehaviour
 {
     public GameObject PauseMenu;
     public GameObject SettingsM;
+    public GameObject GameOver;
     [SerializeField] public AudioSource soundPlayer;
+    public playerHealth playerHealth;
+    public GameObject player;
 
     public void Start()
     {
-       PauseMenu.SetActive(false);
-       SettingsM.SetActive(false);
+        player = GameObject.FindWithTag("Player");
+        PauseMenu.SetActive(false);
+        SettingsM.SetActive(false);
+        GameOver.SetActive(false);
     }
+
+    public void Update()
+    {
+
+        playerHealth playerHealth = player.GetComponent<playerHealth>();
+    }
+
     private void OnEnable()
     {
 
@@ -91,12 +103,25 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
         SoundEffectManager.Play("Button");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
 
 
     }
 
+    public void Respawn()
+    {
+        playerHealth playerHealth = player.GetComponent<playerHealth>();
+        playerHealth.FullHP();
+        SoundEffectManager.Play("Button");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        GameOver.SetActive(false);
+        Time.timeScale = 1f;
+
+    }
     public void PlayGame(string sceneName)
     {
         SoundEffectManager.Play("Button");

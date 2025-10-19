@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
 
     public float health;
+    public float monsterDamage;
+
 
     [Header("Patroling")]
     public Vector3 walkPoint;
@@ -83,6 +85,9 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             ///Attack code here
+            playerHealth playerHealth = player.GetComponent<playerHealth>();
+            playerHealth.TakeDamage(monsterDamage);
+
             ///
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
