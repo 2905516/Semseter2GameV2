@@ -22,6 +22,9 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         //if no data or the game is paused and no dialogue is active
         if (dialogueData == null || (PauseMenu.isPaused = true && isDialogueActive))
         {
@@ -111,6 +114,9 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void EndDialogue()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         SoundEffectManager.Play("Button");
         StopAllCoroutines();
         isDialogueActive = false;

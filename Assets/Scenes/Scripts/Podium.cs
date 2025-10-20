@@ -1,12 +1,28 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class Podium : MonoBehaviour
+public class Podium : MonoBehaviour, IInteractable
 {
     public GameObject BookPage;
+    private bool isInteracted = false;
+    public bool CanInteract()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void Interact()
     {
-        BookPage.SetActive(true);
+        if (isInteracted) 
+        {
+            BookPage.SetActive(true);
+            isInteracted = true;    
+        }
+        else
+        {
+            BookPage.SetActive(false);
+            isInteracted = false;
+        }
+
 
     }
 }

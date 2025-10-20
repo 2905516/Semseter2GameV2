@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa86fe3d52c49c43b448d7775911c40, type: 3}
   m_Name: NarratorDialogue
   m_EditorClassIdentifier: 
-  npcName: Narrator
-  npcPortrait: {fileID: 0}
+  npcName: The Narrator
+  npcPortrait: {fileID: 2076779941, guid: 200e4a92eb85c4a4bb0ccee489982b0f, type: 3}
   npcDialogueLines:
   - 
   autoProgressLines: 

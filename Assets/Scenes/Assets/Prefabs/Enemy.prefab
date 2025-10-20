@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4493334208021167565}
   - component: {fileID: 5536268131543693699}
-  - component: {fileID: 7205461043661447427}
+  - component: {fileID: 3579160123448971020}
   m_Layer: 15
   m_Name: TRespawnCollider2
   m_TagString: Untagged
@@ -52,11 +52,11 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20.05
+  m_Radius: 1.2
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7205461043661447427
+--- !u!114 &3579160123448971020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,12 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1455448013140866436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed9fcd3f73db4fa4094acfb7445212c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 393ae2959893bc0428640f72162d14b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 0}
-  player: {fileID: 0}
-  fallDamage: 0
+  damage: 10000
 --- !u!1 &6641116646181675736
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +185,7 @@ MonoBehaviour:
   walkPointRange: 5
   timeBetweenAttacks: 0.5
   sightRange: 12
-  attackRange: 2.5
+  attackRange: 1.65
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!195 &7959416756776892435

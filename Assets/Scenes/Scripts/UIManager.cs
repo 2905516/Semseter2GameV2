@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
+        playerHealth = player.GetComponent<playerHealth>();
         player = GameObject.FindWithTag("Player");
         PauseMenu.SetActive(false);
         SettingsM.SetActive(false);
@@ -21,7 +22,7 @@ public class UIManager : MonoBehaviour
     public void Update()
     {
 
-        playerHealth playerHealth = player.GetComponent<playerHealth>();
+       // playerHealth playerHealth = player.GetComponent<playerHealth>();
     }
 
     private void OnEnable()
@@ -113,7 +114,6 @@ public class UIManager : MonoBehaviour
 
     public void Respawn()
     {
-        playerHealth playerHealth = player.GetComponent<playerHealth>();
         playerHealth.FullHP();
         SoundEffectManager.Play("Button");
         Cursor.lockState = CursorLockMode.Locked;

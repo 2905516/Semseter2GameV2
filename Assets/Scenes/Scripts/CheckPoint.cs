@@ -1,34 +1,34 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class CheckPoint : MonoBehaviour
 {
-    private RespawnSript respawn;
-    private BoxCollider checkPointCollider;
+    private RespawnManager respawnManager;
+    private Collider checkpointCollider;
 
     private void Awake()
     {
-        respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnSript>();
-        checkPointCollider = GetComponent<BoxCollider>();
-    }
+        checkpointCollider = GetComponent<Collider>();
+        checkpointCollider.isTrigger = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var go = GameObject.FindGameObjectWithTag("Respawn");
+        if (go != null)
+        {
+            respawnManager = go.GetComponent<RespawnManager>();
+        }
+        else
+        {
+            Debug.LogError("CheckPoint: No object in scene tagged 'Respawn'. Create a RespawnManager and tag it 'Respawn'.");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            respawn.respawnPoint = this.gameObject;
-            checkPointCollider.enabled = false;
-        }
+        if (!other.CompareTag("Player")) return;
+        if (respawnManager == null) return;
+
+        respawnManager.respawnPoint = this.gameObject;
+        checkpointCollider.enabled = false; // prevent re-triggering
+        Debug.Log($"Checkpoint set to: {gameObject.name}");
     }
 }

@@ -11471,7 +11471,7 @@ GameObject:
   - component: {fileID: 291750145}
   - component: {fileID: 291750144}
   m_Layer: 0
-  m_Name: TJump
+  m_Name: TNPC1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11492,10 +11492,10 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908337575}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 544493907}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11507,10 +11507,10 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908337575}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 544493907}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: EndDialogue
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13594,6 +13594,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &452926830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7991901209143611670, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+  m_PrefabInstance: {fileID: 418694207664246108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8c28b061adf95478900110c1b4e3ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494588838
 GameObject:
   m_ObjectHideFlags: 0
@@ -14314,7 +14325,7 @@ GameObject:
   - component: {fileID: 544493908}
   - component: {fileID: 544493907}
   m_Layer: 5
-  m_Name: NPC
+  m_Name: NPCNarrator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24423,6 +24434,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &889118180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4601773380744150256, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+  m_PrefabInstance: {fileID: 418694207664246108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &907580472
 GameObject:
   m_ObjectHideFlags: 0
@@ -27563,33 +27585,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1258743233}
   - component: {fileID: 1258743232}
-  - component: {fileID: 1258743231}
   - component: {fileID: 1258743234}
   m_Layer: 0
   m_Name: TRespawnCollider1
-  m_TagString: Respawn
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1258743231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258743229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f6730b884437754e8ac43d6459d43dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseMenu: {fileID: 0}
-  SettingsM: {fileID: 0}
-  GameOver: {fileID: 0}
-  soundPlayer: {fileID: 0}
-  playerHealth: {fileID: 0}
-  player: {fileID: 0}
 --- !u!65 &1258743232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27635,12 +27638,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258743229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed9fcd3f73db4fa4094acfb7445212c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 393ae2959893bc0428640f72162d14b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 338010356}
-  player: {fileID: 948385453}
-  fallDamage: 10000
+  damage: 10000
 --- !u!43 &1267447605
 Mesh:
   m_ObjectHideFlags: 0
@@ -39216,7 +39217,7 @@ GameObject:
   - component: {fileID: 1737592586}
   - component: {fileID: 1737592588}
   m_Layer: 0
-  m_Name: ' TCheckPoint'
+  m_Name: ' TCheckPoint1'
   m_TagString: CheckPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43036,6 +43037,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 157940311}
   m_SourcePrefab: {fileID: 100100000, guid: 7142f8b7f67135441b4e416dc36e092a, type: 3}
+--- !u!114 &1974713924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7325628539150430700, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+  m_PrefabInstance: {fileID: 418694207664246108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1976800825
 GameObject:
   m_ObjectHideFlags: 0
@@ -46450,6 +46462,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &2112913715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2112913717}
+  - component: {fileID: 2112913716}
+  m_Layer: 15
+  m_Name: RespawnManger
+  m_TagString: Respawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2112913716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112913715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c683f5202a309847a38685329becaad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
+--- !u!4 &2112913717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112913715}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.33, y: 2, z: 57.77}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2129532537
 GameObject:
   m_ObjectHideFlags: 0
@@ -46533,18 +46590,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2177157201304731829, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3084873168858621984, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3084873168858621984, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1844658453, guid: 564b8056289994747bc8fa8dc298e362, type: 3}
     - target: {fileID: 3119505643216305653, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: playerHealth
       value: 
@@ -46649,6 +46694,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 9199298553431486186, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9085180870069476344}
+    - target: {fileID: 9199298553431486186, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTryAgain
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199298553431486186, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: playerHealth, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46703,6 +46760,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2177157201304731829, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
   m_PrefabInstance: {fileID: 418694207664246108}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &418694207664246119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1149071379202623236, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+  m_PrefabInstance: {fileID: 418694207664246108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418694207664246113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3444611720729391791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46759,14 +46827,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7205461043661447427, guid: 975d28cbc3c3a18439c2a575d24ce496, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 948385453}
-    - target: {fileID: 7205461043661447427, guid: 975d28cbc3c3a18439c2a575d24ce496, type: 3}
-      propertyPath: respawnPoint
-      value: 
-      objectReference: {fileID: 338010356}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46926,17 +46986,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7350735400991124544, guid: 1c5a68a5e92dc4f46896de74879a19b3, type: 3}
-      propertyPath: health
-      value: 4
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 948385453}
     - target: {fileID: 7350735400991124544, guid: 1c5a68a5e92dc4f46896de74879a19b3, type: 3}
       propertyPath: GameOver
       value: 
       objectReference: {fileID: 534186780}
     - target: {fileID: 7350735400991124544, guid: 1c5a68a5e92dc4f46896de74879a19b3, type: 3}
-      propertyPath: maxHealth
-      value: 4
+      propertyPath: respawnManager
+      value: 
+      objectReference: {fileID: 2112913716}
+    - target: {fileID: 7350735400991124544, guid: 1c5a68a5e92dc4f46896de74879a19b3, type: 3}
+      propertyPath: deathFadeManager
+      value: 
+      objectReference: {fileID: 452926830}
+    - target: {fileID: 7350735400991124544, guid: 1c5a68a5e92dc4f46896de74879a19b3, type: 3}
+      propertyPath: componentsToDisableOnDeath.Array.size
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7350735400991124544, guid: 1c5a68a5e92dc4f46896de74879a19b3, type: 3}
+      propertyPath: 'componentsToDisableOnDeath.Array.data[0]'
+      value: 
+      objectReference: {fileID: 418694207664246119}
+    - target: {fileID: 7350735400991124544, guid: 1c5a68a5e92dc4f46896de74879a19b3, type: 3}
+      propertyPath: 'componentsToDisableOnDeath.Array.data[1]'
+      value: 
+      objectReference: {fileID: 889118180}
+    - target: {fileID: 7350735400991124544, guid: 1c5a68a5e92dc4f46896de74879a19b3, type: 3}
+      propertyPath: 'componentsToDisableOnDeath.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1974713924}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46967,20 +47047,21 @@ SceneRoots:
   - {fileID: 418694207664246108}
   - {fileID: 636299353}
   - {fileID: 3444611720729391791}
+  - {fileID: 1258743233}
+  - {fileID: 2112913717}
   - {fileID: 9085180870069476331}
   - {fileID: 291750146}
+  - {fileID: 1737592587}
   - {fileID: 123587100}
   - {fileID: 2004829841}
   - {fileID: 813539986}
   - {fileID: 338010360}
-  - {fileID: 1737592587}
   - {fileID: 907580475}
   - {fileID: 1930322185}
   - {fileID: 1137321477}
   - {fileID: 1976800828}
   - {fileID: 1283524867}
   - {fileID: 1622834925}
-  - {fileID: 1258743233}
   - {fileID: 432947729}
   - {fileID: 1555883192}
   - {fileID: 2027301365}
