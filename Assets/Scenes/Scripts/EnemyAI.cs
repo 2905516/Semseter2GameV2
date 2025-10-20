@@ -96,6 +96,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        SoundEffectManager.Play("ChasePlayer");
         agent.SetDestination(player.position);
     }
     private void AttackPlayer()

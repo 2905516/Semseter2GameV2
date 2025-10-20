@@ -65,6 +65,7 @@ public class UIManager : MonoBehaviour
     public void Page1(string sceneName)
     {
         SoundEffectManager.Play("Button");
+        SoundEffectManager.Play("ComicTheme");
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 
@@ -103,6 +104,8 @@ public class UIManager : MonoBehaviour
     public void Page5(string sceneName)
     {
         SoundEffectManager.Play("Button");
+
+        
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 

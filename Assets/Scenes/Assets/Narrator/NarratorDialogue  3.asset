@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaa86fe3d52c49c43b448d7775911c40, type: 3}
-  m_Name: NarratorDialogue
+  m_Name: NarratorDialogue  3
   m_EditorClassIdentifier: 
   npcName: The Narrator
   npcPortrait: {fileID: 2076779941, guid: 200e4a92eb85c4a4bb0ccee489982b0f, type: 3}
   npcDialogueLines:
-  - Welcome to my playground, Test subject.
-  - Your stillness can lead to your demise.
-  - Move through your surroundings to escape to the world you miss so dearly.
-  - WASD + Arrow Key
-  autoProgressLines: 01010101
-  autoProgressDelay: 1.5
+  - Wow! a check point.
+  - In this realm you may encounter...
+  - Strange beings...
+  - 'Here''s a tip:'
+  - if you hold "Left Shift" you will run faster
+  - Goodluck
+  autoProgressLines: 010101010101
+  autoProgressDelay: 1
   typingSpeed: 0.05
   voiceSound: {fileID: 0}
   voicePitch: 1

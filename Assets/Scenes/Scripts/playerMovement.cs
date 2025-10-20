@@ -199,6 +199,9 @@ public class playerMovement : MonoBehaviour
         {
             State = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
+
+            //play sound
+        
         }
         // Mode - Walking
         else if (grounded)
