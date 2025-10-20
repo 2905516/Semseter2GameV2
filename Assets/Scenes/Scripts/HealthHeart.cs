@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class HealthHeart : MonoBehaviour
 {
-    public Sprite fullHeart, halfHeart, emptyHeart;
-    public Image heartImage;
+    public Sprite fullHeart;
+    public Sprite halfHeart;
+    public Sprite emptyHeart;
+    private Image heartImage;
 
-    //get image component from the game object and assign it to heartImage varaible
-    public void Awake()
+    private void Awake()
     {
         heartImage = GetComponent<Image>();
     }
@@ -28,17 +27,6 @@ public class HealthHeart : MonoBehaviour
                 heartImage.sprite = emptyHeart;
                 break;
         }
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
 

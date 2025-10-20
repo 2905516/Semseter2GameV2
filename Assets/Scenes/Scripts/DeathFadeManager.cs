@@ -1,117 +1,94 @@
-using System;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DeathFadeManager : MonoBehaviour
 {
-    [Header("Fade Images (stacked on Canvas)")]
-    public Image fadeImage1; // light blood
-    public Image fadeImage2; // medium
-    public Image fadeImage3; // heavy
+    [Header("Fade Layers (bottom → top)")]
+    public List<Image> fadeImages = new List<Image>();
 
-    [Header("Timing (seconds) - exposed for tweaking")]
-    public float fadeInDurationPerImage = 0.5f;
-    public float holdDurationPerImage = 0.2f;
-    public float crossFadeDuration = 0.25f;
+    [Header("Timing Settings")]
+    [Range(0.1f, 3f)] public float fadeInDurationPerImage = 0.8f;
+    [Range(0f, 2f)] public float holdDurationPerImage = 0.4f;
+    [Range(0f, 2f)] public float crossFadeDuration = 0.35f;
 
-    private Coroutine running;
+    private bool isFading = false;
 
     private void Awake()
     {
-        // Ensure images start transparent
-        ResetAllImages();
+        ResetFadeImmediate();
     }
 
-    private void ResetAllImages()
+    public void ResetFadeImmediate()
     {
-        SetImageAlpha(fadeImage1, 0f);
-        SetImageAlpha(fadeImage2, 0f);
-        SetImageAlpha(fadeImage3, 0f);
+        StopAllCoroutines();
+        isFading = false;
+        foreach (var img in fadeImages)
+        {
+            if (img == null) continue;
+            Color c = img.color;
+            c.a = 0f;
+            img.color = c;
+            img.gameObject.SetActive(false);
+        }
     }
 
-    private void SetImageAlpha(Image img, float a)
+    public IEnumerator PlayDeathFadeRoutine()
     {
-        if (img == null) return;
-        var c = img.color;
-        c.a = Mathf.Clamp01(a);
-        img.color = c;
-    }
+        isFading = true;
 
-    /// <summary>
-    /// Starts the layered fade sequence (image1 -> image2 -> image3). Uses unscaled time so it plays regardless of timeScale.
-    /// Calls onComplete when finished.
-    /// </summary>
-    public void PlayDeathFade(Action onComplete = null)
-    {
-        if (running != null) StopCoroutine(running);
-        running = StartCoroutine(DeathFadeSequence(onComplete));
-    }
+        for (int i = 0; i < fadeImages.Count; i++)
+        {
+            Image img = fadeImages[i];
+            if (img == null) continue;
 
-    private IEnumerator DeathFadeSequence(Action onComplete)
-    {
-        // ensure images start transparent
-        ResetAllImages();
+            img.gameObject.SetActive(true);
+            float targetAlpha = Mathf.Clamp01(0.6f + i * 0.25f);
+            yield return FadeImage(img, 0f, targetAlpha, fadeInDurationPerImage);
 
-        // Fade in image 1
-        yield return StartCoroutine(FadeImage(fadeImage1, 0f, 1f, fadeInDurationPerImage));
+            yield return new WaitForSecondsRealtime(holdDurationPerImage);
 
-        // hold
-        yield return new WaitForSecondsRealtime(holdDurationPerImage);
+            if (i < fadeImages.Count - 1)
+                yield return FadeImage(img, img.color.a, 0f, crossFadeDuration);
+        }
 
-        // Fade image1 -> image2 crossfade
-        yield return StartCoroutine(CrossFadeImages(fadeImage1, fadeImage2, crossFadeDuration));
+        // Fade out last image properly
+        if (fadeImages.Count > 0)
+        {
+            Image top = fadeImages[fadeImages.Count - 1];
+            if (top != null)
+            {
+                yield return FadeImage(top, top.color.a, 0f, crossFadeDuration);
+                top.gameObject.SetActive(false);
+            }
+        }
 
-        // hold
-        yield return new WaitForSecondsRealtime(holdDurationPerImage);
-
-        // Crossfade image2 -> image3
-        yield return StartCoroutine(CrossFadeImages(fadeImage2, fadeImage3, crossFadeDuration));
-
-        // hold final
-        yield return new WaitForSecondsRealtime(holdDurationPerImage);
-
-        running = null;
-        onComplete?.Invoke();
+        isFading = false;
     }
 
     private IEnumerator FadeImage(Image img, float from, float to, float duration)
     {
         if (img == null) yield break;
+
         float t = 0f;
+        Color c = img.color;
+        c.a = from;
+        img.color = c;
+
         while (t < duration)
         {
             t += Time.unscaledDeltaTime;
-            float a = Mathf.Lerp(from, to, duration <= 0f ? 1f : t / duration);
-            SetImageAlpha(img, a);
+            float p = Mathf.SmoothStep(0f, 1f, t / duration);
+            c.a = Mathf.Lerp(from, to, p);
+            img.color = c;
             yield return null;
         }
-        SetImageAlpha(img, to);
-    }
 
-    private IEnumerator CrossFadeImages(Image outImg, Image inImg, float duration)
-    {
-        if (outImg == null && inImg == null) yield break;
-        float t = 0f;
-        while (t < duration)
-        {
-            t += Time.unscaledDeltaTime;
-            float p = duration <= 0f ? 1f : t / duration;
-            if (outImg != null) SetImageAlpha(outImg, Mathf.Lerp(1f, 0f, p));
-            if (inImg != null) SetImageAlpha(inImg, Mathf.Lerp(0f, 1f, p));
-            yield return null;
-        }
-        if (outImg != null) SetImageAlpha(outImg, 0f);
-        if (inImg != null) SetImageAlpha(inImg, 1f);
-    }
+        c.a = to;
+        img.color = c;
 
-    /// <summary>
-    /// Immediately stop any running fade and clear the images (transparent).
-    /// </summary>
-    public void ResetFadeImmediate()
-    {
-        if (running != null) StopCoroutine(running);
-        running = null;
-        ResetAllImages();
+        if (to <= 0.01f)
+            img.gameObject.SetActive(false);
     }
 }

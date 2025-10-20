@@ -249,52 +249,24 @@ public class playerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (climbingScript.exitingWall) return;
 
-        if (climbingScript.exitingWall)
-        {
-            return;
+        Vector3 move = orientation.forward * _moveDirection.y + orientation.right * _moveDirection.x;
 
-        }
-        //calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        moveDirection2 = orientation.forward * _moveDirection.y + orientation.right * _moveDirection.x;
-
-
-        // check if player is on slope
         if (OnSlope() && !exitingSlope)
         {
-            rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection(move) * moveSpeed * 20f, ForceMode.Force);
             if (rb.linearVelocity.y > 0f)
-            {
-                rb.AddForce(Vector3.down * 80f, ForceMode.Force); // prevent sliding up slopes
-            }
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
 
         if (grounded)
-        {
-            // move the player on ground
-            //Version 1
-            //rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(move.normalized * moveSpeed * 10f, ForceMode.Force);
+        else
+            rb.AddForce(move.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
-            //Version 2
-            // Vector2 direction = moveAction.ReadValue<Vector2>();
-            //transform.position += new Vector3(_moveDirection.x, 0, _moveDirection.y) * moveSpeed * Time.deltaTime;
-
-            //Version 3
-            rb.AddForce(moveDirection2.normalized * moveSpeed * 10f, ForceMode.Force);
-
-        }
-        else if (!grounded)
-        {
-            // move the player in air
-            rb.AddForce(moveDirection2.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-        }
-
-        //turn off gravity while standing on slope
-        if (!wallrunning) rb.useGravity = !OnSlope();
-
-
-
+        if (!wallrunning)
+            rb.useGravity = !OnSlope();
     }
 
     private void speedControl()

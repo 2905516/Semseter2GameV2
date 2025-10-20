@@ -27,10 +27,14 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private Vector3 moveDirection;
+    private Animator animator;
+
     public void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,6 +47,25 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+
+        moveDirection = new Vector3(agent.velocity.x, 0, agent.velocity.z);
+
+        if (moveDirection == Vector3.zero)
+        {
+            //Idle
+
+            animator.SetFloat("Speed", 0);
+
+        }
+
+        else
+        { 
+            //Run 
+
+            animator.SetFloat("Speed", 1);
+        
+        }
+            
     }
 
 

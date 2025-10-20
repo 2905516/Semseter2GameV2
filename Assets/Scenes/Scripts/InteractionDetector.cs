@@ -3,14 +3,23 @@ using UnityEngine.InputSystem;
 
 public class InteractionDetector : MonoBehaviour
 {
-    private IInteractable interactableInRange = null; //closest interactable
+    private IInteractable interactableInRange = null;
     public GameObject interactionIcon;
     public GameObject pressToInteract;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         interactionIcon.SetActive(false);
         pressToInteract.SetActive(false);
+    }
+
+    void Update()
+    {
+        // If current interactable has disappeared or been disabled, clear it
+        if (interactableInRange == null || !((MonoBehaviour)interactableInRange).gameObject.activeInHierarchy)
+        {
+            ClearInteractable();
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -18,9 +27,7 @@ public class InteractionDetector : MonoBehaviour
         if (context.performed)
         {
             interactableInRange?.Interact();
-
         }
-
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -30,9 +37,6 @@ public class InteractionDetector : MonoBehaviour
             interactableInRange = interactable;
             interactionIcon.SetActive(true);
             pressToInteract.SetActive(true);
-
-
-
         }
     }
 
@@ -40,11 +44,14 @@ public class InteractionDetector : MonoBehaviour
     {
         if (collision.TryGetComponent(out IInteractable interactable) && interactable == interactableInRange)
         {
-            interactableInRange = null;
-            interactionIcon.SetActive(false);
-            pressToInteract.SetActive(false);
-
-
+            ClearInteractable();
         }
+    }
+
+    private void ClearInteractable()
+    {
+        interactableInRange = null;
+        interactionIcon.SetActive(false);
+        pressToInteract.SetActive(false);
     }
 }

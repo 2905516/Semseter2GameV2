@@ -24,9 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Page4.unity
     guid: 721f4e5c2828ae64baea40b780667650
   - enabled: 1
+    path: Assets/Scenes/Page5.unity
+    guid: 1304f477df18d5f458fae2cbdfd0b939
+  - enabled: 1
     path: Assets/Scenes/Scene 1 V1.unity
     guid: ce0a66bc0c18fc74cb76d1a50586bf78
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Death.unity
     guid: 48a321abb814bba45a4bdda146721215
   - enabled: 0

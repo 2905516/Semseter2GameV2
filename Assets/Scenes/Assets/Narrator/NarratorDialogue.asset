@@ -15,8 +15,10 @@ MonoBehaviour:
   npcName: The Narrator
   npcPortrait: {fileID: 2076779941, guid: 200e4a92eb85c4a4bb0ccee489982b0f, type: 3}
   npcDialogueLines:
-  - 
-  autoProgressLines: 
+  - Your stillness can lead to your end.
+  - Move through your surroundings to escape to the world you miss so dearly.
+  - WASD + Arrow Key
+  autoProgressLines: 0101
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   voiceSound: {fileID: 0}

@@ -52,6 +52,12 @@ public class SoundEffectManager : MonoBehaviour
 
     }
 
+  /*  private void Update()
+    {
+        if (Input.anyKeyDown)
+            Debug.Log($"[InputTest] Key pressed: {Input.inputString}");
+    } */
+
     private void Start()
     {
         sfxslider.onValueChanged.AddListener(delegate { OnValueChanged(); });

@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1606060035, guid: eaabac6e90ba3584fafcaead1a7e7a2f, type: 3}
+  m_Sprite: {fileID: 1544960050, guid: ada5dae40fba20742b933d8000c6e4cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -391,8 +391,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6730b884437754e8ac43d6459d43dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverMenu: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  SettingsM: {fileID: 0}
+  GameOver: {fileID: 0}
   soundPlayer: {fileID: 0}
+  playerHealth: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &411706950
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,14 +574,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 391438746}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: Page5
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Scene 1 V1
+          m_StringArgument: Page5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &711963910

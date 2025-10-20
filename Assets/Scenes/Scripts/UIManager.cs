@@ -93,9 +93,17 @@ public class UIManager : MonoBehaviour
     {
         SoundEffectManager.Play("Button");
         SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
 
-        //Play lvl 1 background music
-        SoundEffectManager.Play("lvlMusic");
+
+
+
+    }
+
+    public void Page5(string sceneName)
+    {
+        SoundEffectManager.Play("Button");
+        SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 
 

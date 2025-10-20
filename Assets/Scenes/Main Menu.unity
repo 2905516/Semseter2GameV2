@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 105780734}
   - component: {fileID: 105780733}
   - component: {fileID: 105780732}
+  - component: {fileID: 105780735}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -252,6 +253,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105780730}
   m_CullTransparentMesh: 1
+--- !u!114 &105780735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105780730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06da2bb7e4851ef4d8d3a808d969158c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.08
+  clickScale: 0.95
+  transitionSpeed: 10
+  hoverTint: {r: 1, g: 0.94, b: 0.8, a: 1}
+  normalTint: {r: 1, g: 1, b: 1, a: 1}
+  clickTint: {r: 0.9, g: 0.85, b: 0.7, a: 1}
 --- !u!1 &294540410
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +632,7 @@ GameObject:
   - component: {fileID: 524649782}
   - component: {fileID: 524649781}
   - component: {fileID: 524649780}
+  - component: {fileID: 524649783}
   m_Layer: 5
   m_Name: End
   m_TagString: Untagged
@@ -734,6 +754,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524649778}
   m_CullTransparentMesh: 1
+--- !u!114 &524649783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524649778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06da2bb7e4851ef4d8d3a808d969158c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.08
+  clickScale: 0.95
+  transitionSpeed: 10
+  hoverTint: {r: 1, g: 0.94, b: 0.8, a: 1}
+  normalTint: {r: 1, g: 1, b: 1, a: 1}
+  clickTint: {r: 0.9, g: 0.85, b: 0.7, a: 1}
 --- !u!1 &712741431
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,8 +1026,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6730b884437754e8ac43d6459d43dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverMenu: {fileID: 733463506}
+  PauseMenu: {fileID: 0}
+  SettingsM: {fileID: 0}
+  GameOver: {fileID: 0}
   soundPlayer: {fileID: 0}
+  playerHealth: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1114609789
 GameObject:
   m_ObjectHideFlags: 0

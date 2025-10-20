@@ -1,125 +1,167 @@
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public GameObject SettingsM;
+    [Header("References")]
+    public GameObject pauseMenuUI;
+    public GameObject settingsUI;
+    public DeathFadeManager deathFadeManager;
+    public MonoBehaviour respawnManager;
 
-    public static bool isPaused = false;
+    [Header("State")]
+    public bool isPaused = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool canToggle = true;
+    private float inputCooldown = 0.25f;
+
     void Start()
     {
-        pauseMenu.SetActive(false);
-        SettingsM.SetActive(false);
+        if (pauseMenuUI) pauseMenuUI.SetActive(false);
+        if (settingsUI) settingsUI.SetActive(false);
+        isPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (canToggle && Input.GetKeyDown(KeyCode.P))
         {
-            if (isPaused)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
+            StartCoroutine(HandlePauseToggle());
         }
+    }
 
+    private IEnumerator HandlePauseToggle()
+    {
+        canToggle = false;
+
+        if (isPaused)
+            ResumeGame();
+        else
+            PauseGame();
+
+        // Wait for key release before next toggle
+        yield return new WaitUntil(() => !Input.GetKey(KeyCode.P));
+        yield return new WaitForSecondsRealtime(inputCooldown);
+
+        canToggle = true;
     }
 
     public void PauseGame()
     {
+        if (isPaused) return;
+
+        isPaused = true;
+        Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        //pause game sound effect
-        SoundEffectManager.Play("Pause");
-     
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
-        isPaused = true;
+        if (pauseMenuUI) pauseMenuUI.SetActive(true);
+        if (settingsUI) settingsUI.SetActive(false);
+
+        Debug.Log("[PauseMenu] Game Paused");
     }
 
     public void ResumeGame()
     {
+        if (!isPaused) return;
+
+        isPaused = false;
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        if (pauseMenuUI) pauseMenuUI.SetActive(false);
+        if (settingsUI) settingsUI.SetActive(false);
+
+        Debug.Log("[PauseMenu] Game Resumed");
+    }
+
+    public void OnBackButton()
+    {
         SoundEffectManager.Play("Button");
+        ResumeGame();
+    }
 
+    public void OnSettingsButton()
+    {
+        SoundEffectManager.Play("Button");
+        if (pauseMenuUI) pauseMenuUI.SetActive(false);
+        if (settingsUI) settingsUI.SetActive(true);
+    }
+
+    public void OnSettingsBackButton()
+    {
+        SoundEffectManager.Play("Button");
+        if (settingsUI) settingsUI.SetActive(false);
+        if (pauseMenuUI) pauseMenuUI.SetActive(true);
+    }
+
+    public void OnRestartButton()
+    {
+        SoundEffectManager.Play("Button");
+        StartCoroutine(RestartSequence());
+    }
+
+    private IEnumerator RestartSequence()
+    {
+        Debug.Log("[PauseMenu] Restart initiated...");
         Time.timeScale = 1f;
-
-        SettingsM.SetActive(false);
-        pauseMenu.SetActive(false);
-        
         isPaused = false;
+
+        if (pauseMenuUI) pauseMenuUI.SetActive(false);
+        if (settingsUI) settingsUI.SetActive(false);
+
+        yield return new WaitForSecondsRealtime(0.05f);
+
+        // Fade out effect
+        if (deathFadeManager != null)
+        {
+            deathFadeManager.gameObject.SetActive(true);
+            deathFadeManager.ResetFadeImmediate();
+
+            // Use unscaled time for fade
+            yield return deathFadeManager.PlayDeathFadeRoutine();
+        }
+
+        // Respawn at checkpoint if available
+        if (respawnManager != null)
+        {
+            var method = respawnManager.GetType().GetMethod("RespawnPlayerAtCheckpoint");
+            if (method != null)
+            {
+                method.Invoke(respawnManager, null);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                yield break;
+            }
+        }
+
+        // Fallback: reload scene after fade
+        yield return new WaitForSecondsRealtime(0.4f);
+        Debug.Log("[PauseMenu] Reloading current scene...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu(string sceneName)
     {
         SoundEffectManager.Play("Button");
         SceneManager.LoadScene(sceneName);
+        SoundEffectManager.Play("MainTheme");
+        Time.timeScale = 1f;
+    }
+
+    public void OnQuitButton()
+    {
+        SoundEffectManager.Play("Button");
         Time.timeScale = 1f;
 
-
-
-    }
-    public void RestartLevel()
-    {
-        SoundEffectManager.Play("Button");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
-
-
-    }
-
-    public void Settings()
-    {
-
-        SoundEffectManager.Play("Button");
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(false);
-        SettingsM.SetActive(true);
-
-
-    }
-
-
-    public void Quit()
-    {
-        SoundEffectManager.Play("Button");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
-
-    }
-
-    public void SBack()
-    {
-        SoundEffectManager.Play("Button");
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
-        SettingsM.SetActive(false);
-        
-
-
-    }
-    public void PBack()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        SoundEffectManager.Play("Button");
-        Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
-        isPaused = false;
-        SettingsM.SetActive(false);
-
-
-
+#endif
     }
 }
-

@@ -420,8 +420,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6730b884437754e8ac43d6459d43dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverMenu: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  SettingsM: {fileID: 0}
+  GameOver: {fileID: 0}
   soundPlayer: {fileID: 0}
+  playerHealth: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &263111275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,7 +1205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1387684152, guid: 167e322515e090645931e7e969c76c9f, type: 3}
+  m_Sprite: {fileID: -464255712, guid: f38f040318602b84f92b17af9f7720b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
