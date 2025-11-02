@@ -35,6 +35,17 @@ public class playerMovement : MonoBehaviour
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
 
+    [Header("Attacking")]
+    public float attackDistance = 3f;
+    public float attackDelay = 0.4f;
+    public float attackSpeed = 1f;
+    public float attackDamage = 1f;
+    public LayerMask attacklayer;
+    public GameObject hitEffect;
+    bool attacking = false;
+    bool readytoAttack = true;
+    int attackCount;
+
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -48,6 +59,9 @@ public class playerMovement : MonoBehaviour
 
     [Header("Refernces")]
     public Climbing climbingScript;
+    public Camera cam;
+    PlayerInput PlayerInput;
+    PlayerInput.OnFootActions input;
 
     public Transform orientation;
 
@@ -87,10 +101,16 @@ public class playerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        PlayerInput = new PlayerInput();
+        input = PlayerInput.OnFoot;
+        //AssignInputs();
+
         readyToJump = true;
 
         startYScale = transform.localScale.y;
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -110,6 +130,11 @@ public class playerMovement : MonoBehaviour
         else
         {
             rb.linearDamping = 0;
+        }
+
+        if (input.Attack.IsPressed())
+        {
+            Attack();
         }
     }
 
@@ -319,6 +344,45 @@ public class playerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
+    private void Attack()
+    {
+        //attack function
+        if (!readytoAttack || attacking) return;
+
+        readytoAttack = false;
+        attacking = true;
+
+        Invoke(nameof(ResetAttack), attackSpeed);
+        Invoke(nameof(AttackRaycast), attackDelay);
+
+        SoundEffectManager.Play("AttackSwing");
+    }
+
+    void ResetAttack()
+    {
+        readytoAttack = true;
+        attacking = false;
+    }
+
+    void AttackRaycast()
+    {
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attacklayer))
+        {
+            HitTarget(hit.point); 
+        
+        }
+    
+    
+    }
+
+    void HitTarget(Vector3 pos)
+    {
+        SoundEffectManager.Play("AttackHit");
+
+        GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
+        Destroy(GO, 20);
+
+    }
     public bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))

@@ -23656,6 +23656,81 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &875711584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 875711585}
+  - component: {fileID: 875711587}
+  - component: {fileID: 875711586}
+  m_Layer: 5
+  m_Name: Crosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &875711585
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875711584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.39, y: 0.39, z: 0.39}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2033178450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &875711586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875711584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -690812398, guid: 0d0e7739c02c63a4b92d02f766b69fb2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &875711587
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875711584}
+  m_CullTransparentMesh: 1
 --- !u!1001 &878045042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24872,7 +24947,7 @@ GameObject:
   - component: {fileID: 983029916}
   - component: {fileID: 983029915}
   - component: {fileID: 983029914}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: WallN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30006,7 +30081,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   SettingsM: {fileID: 0}
   GameOver: {fileID: 0}
-  soundPlayer: {fileID: 0}
+  soundEffectManager: {fileID: 0}
   playerHealth: {fileID: 0}
   player: {fileID: 0}
 --- !u!1001 &1285719366
@@ -38767,7 +38842,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   SettingsM: {fileID: 0}
   GameOver: {fileID: 0}
-  soundPlayer: {fileID: 0}
+  soundEffectManager: {fileID: 0}
   playerHealth: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &1622834927
@@ -48201,7 +48276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1959029491
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52227,6 +52302,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!224 &2033178450 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7341803759954677714, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+  m_PrefabInstance: {fileID: 418694207664246108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2033842270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 080c2e2ccfc9c504595ffdefd0ff5205, type: 3}
@@ -53773,11 +53853,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1698235357397992234, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2593907916342517110, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2593907916342517110, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMax.y
@@ -53793,7 +53873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4231640371147420834, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4231640371147420834, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMax.y
@@ -53801,7 +53881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4231640371147420834, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4920612097177874600, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -53813,7 +53893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5259528359721153173, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5259528359721153173, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMax.y
@@ -53837,7 +53917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275799491246496622, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6388825713330844852, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: player
@@ -54027,9 +54107,13 @@ PrefabInstance:
       propertyPath: 'fadeImages.Array.data[2]'
       value: 
       objectReference: {fileID: 404922369}
+    - target: {fileID: 8027892664135507413, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+      propertyPath: m_Value
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8445433259046451930, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8445433259046451930, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMax.y
@@ -54037,7 +54121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8445433259046451930, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8509919772072396108, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -54053,7 +54137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9058053385257760047, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9199298553431486186, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -54061,7 +54145,10 @@ PrefabInstance:
       objectReference: {fileID: 9085180870069476344}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7341803759954677714, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 875711585}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9058053385257760047, guid: b8a6921e90cd2634b9e364a15edb4288, type: 3}
       insertIndex: -1
@@ -54206,7 +54293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.data[0].name
@@ -54221,6 +54308,10 @@ PrefabInstance:
       value: ComicTheme
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+      propertyPath: soundEffectGroups.Array.data[3].name
+      value: ChasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.data[0].audioClips.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -54230,6 +54321,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.data[2].audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+      propertyPath: soundEffectGroups.Array.data[3].audioClips.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
@@ -54244,6 +54339,10 @@ PrefabInstance:
       propertyPath: 'soundEffectGroups.Array.data[2].audioClips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 837dab84567d85944ae7de43a9ef17dd, type: 3}
+    - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+      propertyPath: 'soundEffectGroups.Array.data[3].audioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f0b2312438f3cdf49a1684dcf0945c0a, type: 3}
     - target: {fileID: 4618575989142183515, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: sfxslider
       value: 

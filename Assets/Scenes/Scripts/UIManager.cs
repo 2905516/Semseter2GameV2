@@ -6,7 +6,7 @@ public class UIManager : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject SettingsM;
     public GameObject GameOver;
-    [SerializeField] public AudioSource soundPlayer;
+    [SerializeField] public AudioSource soundEffectManager;
     public playerHealth playerHealth;
     public GameObject player;
 
