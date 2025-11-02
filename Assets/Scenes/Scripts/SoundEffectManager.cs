@@ -52,11 +52,20 @@ public class SoundEffectManager : MonoBehaviour
 
     }
 
-  /*  private void Update()
+    public static void Stop()
     {
-        if (Input.anyKeyDown)
-            Debug.Log($"[InputTest] Key pressed: {Input.inputString}");
-    } */
+        if (audioSource != null)
+            audioSource.Stop();
+
+        /*if (voiceAudioSource != null)
+            voiceAudioSource.Stop(); */
+    }
+
+    /*  private void Update()
+      {
+          if (Input.anyKeyDown)
+              Debug.Log($"[InputTest] Key pressed: {Input.inputString}");
+      } */
 
     private void Start()
     {

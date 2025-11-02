@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         if (isPaused)
             ResumeGame();
         else
-            PauseGame();
+            PauseGame(); 
 
         // Wait for key release before next toggle
         yield return new WaitUntil(() => !Input.GetKey(KeyCode.P));
@@ -51,6 +51,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+
         if (isPaused) return;
 
         isPaused = true;
@@ -58,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        SoundEffectManager.Play("OpenUI");
         if (pauseMenuUI) pauseMenuUI.SetActive(true);
         if (settingsUI) settingsUI.SetActive(false);
 
@@ -73,6 +75,8 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        
+
         if (pauseMenuUI) pauseMenuUI.SetActive(false);
         if (settingsUI) settingsUI.SetActive(false);
 
@@ -87,7 +91,8 @@ public class PauseMenu : MonoBehaviour
 
     public void OnSettingsButton()
     {
-        SoundEffectManager.Play("Button");
+        SoundEffectManager.Play("OpenUI");
+
         if (pauseMenuUI) pauseMenuUI.SetActive(false);
         if (settingsUI) settingsUI.SetActive(true);
     }
@@ -149,7 +154,9 @@ public class PauseMenu : MonoBehaviour
     {
         SoundEffectManager.Play("Button");
         SceneManager.LoadScene(sceneName);
-        SoundEffectManager.Play("MainTheme");
+        SoundEffectManager.Stop();
+
+      
         Time.timeScale = 1f;
     }
 

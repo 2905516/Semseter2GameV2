@@ -111,7 +111,7 @@ public class EnemyAI : MonoBehaviour
             ///Attack code here
             playerHealth playerHealth = player.GetComponent<playerHealth>();
             playerHealth.TakeDamage(monsterDamage);
-
+            SoundEffectManager.Play("Dead");
             ///
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);

@@ -56,6 +56,7 @@ public class playerHealth : MonoBehaviour
 
         if (health <= 0f)
         {
+      
             isDead = true;
             Debug.Log("Player is dead");
             StartCoroutine(HandleDeathSequence());
@@ -64,6 +65,7 @@ public class playerHealth : MonoBehaviour
 
     private IEnumerator HandleDeathSequence()
     {
+        
         // Disable player controls
         foreach (var mb in componentsToDisableOnDeath)
             if (mb != null) mb.enabled = false;

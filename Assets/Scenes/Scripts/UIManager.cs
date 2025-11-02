@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     {
         SoundEffectManager.Play("Button");
         SceneManager.LoadScene(sceneName);
+        SoundEffectManager.Stop();
 
         //Play music for the Main Menu
         SoundEffectManager.Play("MainTheme");
@@ -65,8 +66,12 @@ public class UIManager : MonoBehaviour
     public void Page1(string sceneName)
     {
         SoundEffectManager.Play("Button");
-        SoundEffectManager.Play("ComicTheme");
+
         SceneManager.LoadScene(sceneName);
+
+        SoundEffectManager.Stop();
+        SoundEffectManager.Play("ComicTheme");
+
         Time.timeScale = 1f;
 
 
@@ -104,8 +109,8 @@ public class UIManager : MonoBehaviour
     public void Page5(string sceneName)
     {
         SoundEffectManager.Play("Button");
+       
 
-        
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 
@@ -127,6 +132,8 @@ public class UIManager : MonoBehaviour
     {
         playerHealth.FullHP();
         SoundEffectManager.Play("Button");
+        SoundEffectManager.Stop();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         GameOver.SetActive(false);
@@ -137,6 +144,7 @@ public class UIManager : MonoBehaviour
     {
         SoundEffectManager.Play("Button");
         SceneManager.LoadScene(sceneName);
+        SoundEffectManager.Stop();
 
         //Play music for the comics
         SoundEffectManager.Play("ComicSong");

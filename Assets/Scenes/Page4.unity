@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 391438743}
   - component: {fileID: 391438742}
   - component: {fileID: 391438746}
+  - component: {fileID: 391438747}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -394,9 +395,22 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   SettingsM: {fileID: 0}
   GameOver: {fileID: 0}
-  soundPlayer: {fileID: 0}
+  soundEffectManager: {fileID: 0}
   playerHealth: {fileID: 0}
   player: {fileID: 0}
+--- !u!114 &391438747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391438741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6339d41819b8f49a51c4724137c468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countDown: 11
 --- !u!1 &411706950
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.data[0].name
@@ -516,6 +530,10 @@ PrefabInstance:
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.data[2].name
       value: ComicTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+      propertyPath: soundEffectGroups.Array.data[3].name
+      value: Portal
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.data[0].audioClips.Array.size
@@ -541,6 +559,10 @@ PrefabInstance:
       propertyPath: 'soundEffectGroups.Array.data[2].audioClips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 837dab84567d85944ae7de43a9ef17dd, type: 3}
+    - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+      propertyPath: 'soundEffectGroups.Array.data[3].audioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 61bea4c31d41f1b4bb95f18aa96c535f, type: 3}
     - target: {fileID: 4618575989142183515, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: sfxslider
       value: 
