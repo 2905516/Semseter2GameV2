@@ -18,13 +18,12 @@ MonoBehaviour:
   - what?
   - I'm pretty sure you know how to crouch.
   - no?
-  - Ugh you idiot.
-  - You're the test subject.
+  - You idiot.
   - Should I tell you all the time what to do?
   - It's "Left Ctrl".
   - Hold "Left Ctrl"
-  autoProgressLines: 0101010101010101
+  autoProgressLines: 01010101010101
   autoProgressDelay: 1
-  typingSpeed: 0.05
+  typingSpeed: 0.035
   voiceSound: {fileID: 0}
   voicePitch: 1

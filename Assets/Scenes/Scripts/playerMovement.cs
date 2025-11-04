@@ -19,6 +19,9 @@ public class playerMovement : MonoBehaviour
 
     public float groundDrag;
 
+    private bool playingFootSteps = false;
+    private float footstepSpeed = 5f;
+
     [Header("Jumping")]
     public float jumpForce;
     public float jumpCooldown;
@@ -75,6 +78,8 @@ public class playerMovement : MonoBehaviour
     Rigidbody rb;
 
     public InputActionReference move;
+    bool isWalking = false;
+    private Animator animator;
 
     public MovementState State;
     public enum MovementState
@@ -96,8 +101,8 @@ public class playerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
 
+        
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -216,6 +221,10 @@ public class playerMovement : MonoBehaviour
         {
             State = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
+
+            //animator.SetBool("IsWalking", true);
+            isWalking = false;
+            StartFootsteps();
         }
 
 
@@ -233,13 +242,20 @@ public class playerMovement : MonoBehaviour
         {
             State = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
+            //animator.SetBool("IsWalking", true);
+            isWalking = true;
+            StartFootsteps();
+
         }
 
         //Mode - Air
         else
         {
             State = MovementState.air;
+           // animator.SetBool("IsWalking", false);
 
+            isWalking = false;
+            StopFootsteps();
         }
 
         //check if desiredMoveSpeed has changed drastically
@@ -289,9 +305,21 @@ public class playerMovement : MonoBehaviour
         }
 
         if (grounded)
+        {
+
             rb.AddForce(move.normalized * moveSpeed * 10f, ForceMode.Force);
+            
+
+        }
+
         else
+        { 
+        
             rb.AddForce(move.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+
+          
+        }
+            
 
         if (!wallrunning)
             rb.useGravity = !OnSlope();
@@ -397,6 +425,28 @@ public class playerMovement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
 
+
+
+    }
+
+    void StartFootsteps()
+    {
+        playingFootSteps = true;
+        InvokeRepeating(nameof(PlayFootstep), 0f, footstepSpeed);
+
+    }
+
+
+    void StopFootsteps()
+    {
+        playingFootSteps = false;
+        CancelInvoke(nameof(PlayFootstep));
+
+    }
+
+    void PlayFootstep()
+    {
+        SoundEffectManager.Play("Footstep");
 
 
     }

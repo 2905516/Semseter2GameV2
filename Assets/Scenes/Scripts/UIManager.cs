@@ -143,16 +143,23 @@ public class UIManager : MonoBehaviour
     public void PlayGame(string sceneName)
     {
         SoundEffectManager.Play("Button");
+
         SceneManager.LoadScene(sceneName);
+
         SoundEffectManager.Stop();
 
-        //Play music for the comics
-        SoundEffectManager.Play("ComicSong");
+        //SoundEffectManager.Play("BGS");
         Time.timeScale = 1f;
 
 
     }
 
+    public void PlayMusic()
+    {
+
+        SoundEffectManager.Play("BGS");
+
+    }
    
 
 

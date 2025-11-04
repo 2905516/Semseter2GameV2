@@ -20,6 +20,6 @@ MonoBehaviour:
   - Space Key to jump
   autoProgressLines: 010101
   autoProgressDelay: 1
-  typingSpeed: 0.05
+  typingSpeed: 0.035
   voiceSound: {fileID: 0}
   voicePitch: 1

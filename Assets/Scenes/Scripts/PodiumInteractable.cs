@@ -9,6 +9,7 @@ public class PodiumInteractable : MonoBehaviour, IInteractable
     public void Interact()
     {
         isActive = !isActive;
+        SoundEffectManager.Play("OpenUI");
         imageToShow.SetActive(isActive);
     }
 

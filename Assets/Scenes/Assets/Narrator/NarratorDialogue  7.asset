@@ -21,6 +21,6 @@ MonoBehaviour:
   - You'll find something cool over there
   autoProgressLines: 01010101
   autoProgressDelay: 1
-  typingSpeed: 0.05
+  typingSpeed: 0.035
   voiceSound: {fileID: 0}
   voicePitch: 1

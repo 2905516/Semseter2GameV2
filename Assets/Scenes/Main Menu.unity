@@ -1030,7 +1030,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   SettingsM: {fileID: 0}
   GameOver: {fileID: 0}
-  soundEffectManager: {fileID: 0}
+  soundEffectManager: {fileID: 1729865176}
   playerHealth: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &733463512

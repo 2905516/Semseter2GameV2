@@ -504,7 +504,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   SettingsM: {fileID: 0}
   GameOver: {fileID: 0}
-  soundPlayer: {fileID: 0}
+  soundEffectManager: {fileID: 1774798858}
   playerHealth: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &785906786
@@ -983,6 +983,10 @@ PrefabInstance:
       value: ComicTheme
       objectReference: {fileID: 0}
     - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+      propertyPath: soundEffectGroups.Array.data[3].name
+      value: BackgroundSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: soundEffectGroups.Array.data[0].audioClips.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1006,6 +1010,10 @@ PrefabInstance:
       propertyPath: 'soundEffectGroups.Array.data[2].audioClips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 837dab84567d85944ae7de43a9ef17dd, type: 3}
+    - target: {fileID: 1800529118461180927, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+      propertyPath: 'soundEffectGroups.Array.data[3].audioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f6bf9416d533f8c4e826acd2a72f6aad, type: 3}
     - target: {fileID: 4618575989142183515, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
       propertyPath: sfxslider
       value: 
@@ -1095,6 +1103,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+--- !u!82 &1774798858 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 769135897309926547, guid: 0bfb169a445330e49b74a57420b63f3e, type: 3}
+  m_PrefabInstance: {fileID: 1774798857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1966604025
 GameObject:
   m_ObjectHideFlags: 0

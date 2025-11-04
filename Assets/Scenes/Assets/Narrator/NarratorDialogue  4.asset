@@ -18,6 +18,6 @@ MonoBehaviour:
   - Climb test subject!!
   autoProgressLines: 01
   autoProgressDelay: 1
-  typingSpeed: 0.05
+  typingSpeed: 0.035
   voiceSound: {fileID: 0}
   voicePitch: 1
