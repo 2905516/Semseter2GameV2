@@ -223,8 +223,7 @@ public class playerMovement : MonoBehaviour
             desiredMoveSpeed = crouchSpeed;
 
             //animator.SetBool("IsWalking", true);
-            isWalking = false;
-            StartFootsteps();
+            
         }
 
 
@@ -242,9 +241,8 @@ public class playerMovement : MonoBehaviour
         {
             State = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
-            //animator.SetBool("IsWalking", true);
-            isWalking = true;
-            StartFootsteps();
+           
+            
 
         }
 
@@ -252,10 +250,7 @@ public class playerMovement : MonoBehaviour
         else
         {
             State = MovementState.air;
-           // animator.SetBool("IsWalking", false);
-
-            isWalking = false;
-            StopFootsteps();
+          
         }
 
         //check if desiredMoveSpeed has changed drastically
@@ -308,6 +303,8 @@ public class playerMovement : MonoBehaviour
         {
 
             rb.AddForce(move.normalized * moveSpeed * 10f, ForceMode.Force);
+
+      
             
 
         }
@@ -316,8 +313,8 @@ public class playerMovement : MonoBehaviour
         { 
         
             rb.AddForce(move.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+         
 
-          
         }
             
 
@@ -446,7 +443,7 @@ public class playerMovement : MonoBehaviour
 
     void PlayFootstep()
     {
-        SoundEffectManager.Play("Footstep");
+       // SoundEffectManager.Play("Footstep");
 
 
     }

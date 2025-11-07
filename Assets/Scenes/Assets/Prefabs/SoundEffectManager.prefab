@@ -157,13 +157,48 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1f0477829289fab46829e98e5c6837ed, type: 3}
   - name: ComicTheme
     audioClips:
-    - {fileID: 8300000, guid: 1f2f732dd4c15b443980cfd61e0fb8eb, type: 3}
+    - {fileID: 8300000, guid: abb5201f23cbb0141b0f70bb2c4510fd, type: 3}
   - name: ChasePlayer
     audioClips:
     - {fileID: 8300000, guid: f0b2312438f3cdf49a1684dcf0945c0a, type: 3}
   - name: MainTheme
     audioClips:
     - {fileID: 8300000, guid: 4ae9fbb865192c34d9caf6026f79aa6b, type: 3}
+  - name: OpenUI
+    audioClips:
+    - {fileID: 8300000, guid: 8c2bd67a879b564428885fb773b46271, type: 3}
+  - name: Dead
+    audioClips:
+    - {fileID: 8300000, guid: dc78f3f44ec20d44291a0a5a2f1464ae, type: 3}
+  - name: Footstep
+    audioClips:
+    - {fileID: 8300000, guid: c14061661e757be49955501a63f595d8, type: 3}
+    - {fileID: 8300000, guid: eac048c36a93edf4b9ddaa6c7e039f36, type: 3}
+    - {fileID: 8300000, guid: 38fa9259a58bcb64e9a55c4e212a1f93, type: 3}
+    - {fileID: 8300000, guid: 946e76e3b41235a4492cb9d9837efd20, type: 3}
+    - {fileID: 8300000, guid: 72f5f1df014a5de4086e32d01a60b5f8, type: 3}
+    - {fileID: 8300000, guid: ee8b4fe0cb6a01343879ccf9d89df895, type: 3}
+    - {fileID: 8300000, guid: 318fa64813865a9459aaaad4c800f92b, type: 3}
+    - {fileID: 8300000, guid: 3527383067261bc4298a2182c5c2dff6, type: 3}
+    - {fileID: 8300000, guid: 5eead81f3710e0f49b582b7741a851f3, type: 3}
+    - {fileID: 8300000, guid: db45b293792264a4da58745d70abb203, type: 3}
+    - {fileID: 8300000, guid: f4062204625facb4490e6fa9565fe16b, type: 3}
+    - {fileID: 8300000, guid: eec27c0e8d775c849890cd8bc430afa0, type: 3}
+    - {fileID: 8300000, guid: aee30027a30da454cb0a32c84b42e7cb, type: 3}
+    - {fileID: 8300000, guid: f3ac8a5d85ef58141853839a26f09d45, type: 3}
+    - {fileID: 8300000, guid: c4bd12b1a660c19438982fac545fe5a6, type: 3}
+    - {fileID: 8300000, guid: c6349e290575f664ab5e30688397f4ef, type: 3}
+    - {fileID: 8300000, guid: 873fe3d44f1e4c0419c67500663d3f83, type: 3}
+    - {fileID: 8300000, guid: 3cb8132c4bc8e094ea63aa4ebde828d3, type: 3}
+    - {fileID: 8300000, guid: 9f73592232a73e14ea60901e5c669103, type: 3}
+    - {fileID: 8300000, guid: b5fd7a3006a2d44449c67adf7de897b0, type: 3}
+    - {fileID: 8300000, guid: 2118c8ecdd0adae44a0677ffffbb2615, type: 3}
+  - name: BGS
+    audioClips:
+    - {fileID: 8300000, guid: 82d950385c4149c4c810f3a77e3f7fce, type: 3}
+  - name: Portal
+    audioClips:
+    - {fileID: 8300000, guid: 61bea4c31d41f1b4bb95f18aa96c535f, type: 3}
 --- !u!82 &9208199292828243806
 AudioSource:
   m_ObjectHideFlags: 0
