@@ -172,27 +172,27 @@ MonoBehaviour:
     - {fileID: 8300000, guid: dc78f3f44ec20d44291a0a5a2f1464ae, type: 3}
   - name: Footstep
     audioClips:
-    - {fileID: 8300000, guid: c14061661e757be49955501a63f595d8, type: 3}
-    - {fileID: 8300000, guid: eac048c36a93edf4b9ddaa6c7e039f36, type: 3}
-    - {fileID: 8300000, guid: 38fa9259a58bcb64e9a55c4e212a1f93, type: 3}
-    - {fileID: 8300000, guid: 946e76e3b41235a4492cb9d9837efd20, type: 3}
-    - {fileID: 8300000, guid: 72f5f1df014a5de4086e32d01a60b5f8, type: 3}
-    - {fileID: 8300000, guid: ee8b4fe0cb6a01343879ccf9d89df895, type: 3}
-    - {fileID: 8300000, guid: 318fa64813865a9459aaaad4c800f92b, type: 3}
-    - {fileID: 8300000, guid: 3527383067261bc4298a2182c5c2dff6, type: 3}
-    - {fileID: 8300000, guid: 5eead81f3710e0f49b582b7741a851f3, type: 3}
-    - {fileID: 8300000, guid: db45b293792264a4da58745d70abb203, type: 3}
-    - {fileID: 8300000, guid: f4062204625facb4490e6fa9565fe16b, type: 3}
-    - {fileID: 8300000, guid: eec27c0e8d775c849890cd8bc430afa0, type: 3}
-    - {fileID: 8300000, guid: aee30027a30da454cb0a32c84b42e7cb, type: 3}
-    - {fileID: 8300000, guid: f3ac8a5d85ef58141853839a26f09d45, type: 3}
-    - {fileID: 8300000, guid: c4bd12b1a660c19438982fac545fe5a6, type: 3}
-    - {fileID: 8300000, guid: c6349e290575f664ab5e30688397f4ef, type: 3}
-    - {fileID: 8300000, guid: 873fe3d44f1e4c0419c67500663d3f83, type: 3}
-    - {fileID: 8300000, guid: 3cb8132c4bc8e094ea63aa4ebde828d3, type: 3}
-    - {fileID: 8300000, guid: 9f73592232a73e14ea60901e5c669103, type: 3}
-    - {fileID: 8300000, guid: b5fd7a3006a2d44449c67adf7de897b0, type: 3}
-    - {fileID: 8300000, guid: 2118c8ecdd0adae44a0677ffffbb2615, type: 3}
+    - {fileID: 8300000, guid: 6cd76d92b293e8b4bb2ecb18cd5dc0a6, type: 3}
+    - {fileID: 8300000, guid: d4b698774ec14e44785337823b64321e, type: 3}
+    - {fileID: 8300000, guid: 059dbfff426857b4ca253e18423177ed, type: 3}
+    - {fileID: 8300000, guid: 5662b590a9f3e7544824d7cca9341bb3, type: 3}
+    - {fileID: 8300000, guid: d9289b4d5c5fd994f871bbe16a602168, type: 3}
+    - {fileID: 8300000, guid: 6a6e59fec937c804fb4fba815f103f64, type: 3}
+    - {fileID: 8300000, guid: 3831e9806f7c07a4d957a2740e439f79, type: 3}
+    - {fileID: 8300000, guid: 39d6cf7102c66194db9c8345610080ef, type: 3}
+    - {fileID: 8300000, guid: 91c78abec8311754484f5e5bf36d9354, type: 3}
+    - {fileID: 8300000, guid: ee159dece9b29a14fa06b6a350369503, type: 3}
+    - {fileID: 8300000, guid: c7210dd2177b23c40a7ce19eb01fa7a0, type: 3}
+    - {fileID: 8300000, guid: 6ebd7b6199bdba74cbaf96c233059e38, type: 3}
+    - {fileID: 8300000, guid: e1a2b56cac0a8484e8ab427b9d3be5a5, type: 3}
+    - {fileID: 8300000, guid: e72aa24c76b5ff54e9253544b7bf3775, type: 3}
+    - {fileID: 8300000, guid: 12ca3799beb6ffc4cbcced8d09a3953a, type: 3}
+    - {fileID: 8300000, guid: 3293689193b694b419466744af68e1e2, type: 3}
+    - {fileID: 8300000, guid: a1b575b6911b3054ab692053c5b85d40, type: 3}
+    - {fileID: 8300000, guid: 25444bdb045066c478bb7903e22d49e8, type: 3}
+    - {fileID: 8300000, guid: b054bac3a7ce9de49954279221706731, type: 3}
+    - {fileID: 8300000, guid: 14a7fc4522f8f7642b19f067d82ba426, type: 3}
+    - {fileID: 8300000, guid: 8d09428ea1d85394ba7eb36a2024684d, type: 3}
   - name: BGS
     audioClips:
     - {fileID: 8300000, guid: 82d950385c4149c4c810f3a77e3f7fce, type: 3}

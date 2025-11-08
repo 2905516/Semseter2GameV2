@@ -19,8 +19,7 @@ public class playerMovement : MonoBehaviour
 
     public float groundDrag;
 
-    private bool playingFootSteps = false;
-    private float footstepSpeed = 5f;
+   
 
     [Header("Jumping")]
     public float jumpForce;
@@ -60,10 +59,15 @@ public class playerMovement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
+    [Header("Foootsteps")]
+    private bool playingFootsteps = false;
+    private float footstepSpeed = 0.5f;
+
     [Header("Refernces")]
     public Climbing climbingScript;
     public Camera cam;
     PlayerInput PlayerInput;
+    PauseMenu PauseMenu;
     PlayerInput.OnFootActions input;
 
     public Transform orientation;
@@ -127,6 +131,8 @@ public class playerMovement : MonoBehaviour
         MyInput();
         speedControl();
         StateHandler();
+
+
         //handle drag
         if (grounded)
         {
@@ -137,6 +143,14 @@ public class playerMovement : MonoBehaviour
             rb.linearDamping = 0;
         }
 
+        if (PauseMenu.isPaused)
+        {
+            //stop animation
+            StopFootsteps();
+
+        }
+
+ 
         if (input.Attack.IsPressed())
         {
             Attack();
@@ -291,6 +305,8 @@ public class playerMovement : MonoBehaviour
         if (climbingScript.exitingWall) return;
 
         Vector3 move = orientation.forward * _moveDirection.y + orientation.right * _moveDirection.x;
+        Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+        bool isMoving = move.magnitude > 0.1f && horizontalVelocity.magnitude > 0.1f;
 
         if (OnSlope() && !exitingSlope)
         {
@@ -317,9 +333,22 @@ public class playerMovement : MonoBehaviour
 
         }
             
-
+        
+        //handle gravity on slopes
         if (!wallrunning)
             rb.useGravity = !OnSlope();
+
+        if (grounded && isMoving)
+        {
+            if (!playingFootsteps)
+                StartFootsteps();
+        }
+        else
+        {
+            if (playingFootsteps)
+                StopFootsteps();
+        }
+        // ------------------------------------------
     }
 
     private void speedControl()
@@ -428,7 +457,28 @@ public class playerMovement : MonoBehaviour
 
     void StartFootsteps()
     {
-        playingFootSteps = true;
+        Debug.Log("StartFootsteps()");
+        playingFootsteps = true;
+
+        // Adjust footstep rate depending on movement state
+        switch (State)
+        {
+            case MovementState.sprinting:
+                footstepSpeed = 0.3f; // faster
+                break;
+            case MovementState.walking:
+                footstepSpeed = 0.4f; // normal
+                break;
+            case MovementState.crouching:
+                footstepSpeed = 0.8f; // slower
+                break;
+            default:
+                footstepSpeed = 0.4f;
+                break;
+        }
+
+        // Restart footstep sound loop with new rate
+        CancelInvoke(nameof(PlayFootstep));
         InvokeRepeating(nameof(PlayFootstep), 0f, footstepSpeed);
 
     }
@@ -436,15 +486,38 @@ public class playerMovement : MonoBehaviour
 
     void StopFootsteps()
     {
-        playingFootSteps = false;
+        Debug.Log("StopFootsteps()");
+        playingFootsteps = false;
         CancelInvoke(nameof(PlayFootstep));
 
     }
 
     void PlayFootstep()
     {
-       // SoundEffectManager.Play("Footstep");
+        // Add small pitch variation for realism
+        float randomPitch = Random.Range(0.9f, 1.1f);
 
+        // Temporarily adjust pitch on SoundEffectManager's AudioSource
+        var audioManagerObj = GameObject.FindObjectOfType<SoundEffectManager>();
+        if (audioManagerObj != null)
+        {
+            AudioSource source = audioManagerObj.GetComponent<AudioSource>();
+            if (source != null)
+            {
+                float originalPitch = source.pitch;
+                source.pitch = randomPitch;
+                SoundEffectManager.Play("Footstep");
+                source.pitch = originalPitch;
+            }
+            else
+            {
+                SoundEffectManager.Play("Footstep");
+            }
+        }
+        else
+        {
+            SoundEffectManager.Play("Footstep");
+        }
 
     }
     public void Quit()
