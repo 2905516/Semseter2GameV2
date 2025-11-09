@@ -15,11 +15,8 @@ MonoBehaviour:
   npcName: The Narrator
   npcPortrait: {fileID: 2076779941, guid: 200e4a92eb85c4a4bb0ccee489982b0f, type: 3}
   npcDialogueLines:
-  - Phew
-  - Wasn't that fun..
-  - I'm suprised you come thus far
-  - Now use what you've learn to jump over that gap
-  autoProgressLines: 01010101
+  - Now use what you've learn to jump over t
+  autoProgressLines: 01
   autoProgressDelay: 1
   typingSpeed: 0.035
   voiceSound: {fileID: 0}

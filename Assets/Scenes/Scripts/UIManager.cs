@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 public class UIManager : MonoBehaviour
@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public GameObject GameOver;
     [SerializeField] public AudioSource soundEffectManager;
     public playerHealth playerHealth;
+    public MonsterActivation monsterActivation;
     public GameObject player;
 
     public void Start()
@@ -25,18 +26,6 @@ public class UIManager : MonoBehaviour
        // playerHealth playerHealth = player.GetComponent<playerHealth>();
     }
 
-    private void OnEnable()
-    {
-
-       // playerHealth.OnPlayerDeath += EnableGameOverMenu;
-    }
-
-    private void OnDisable()
-    {
-
-      // playerHealth.OnPlayerDeath -= EnableGameOverMenu;
-    }
-
 
 
     public void MainMenu(string sceneName)
@@ -46,7 +35,7 @@ public class UIManager : MonoBehaviour
         SoundEffectManager.Stop();
 
         //Play music for the Main Menu
-        SoundEffectManager.Play("MainTheme");
+        //SoundEffectManager.Play("MainTheme");
         Time.timeScale = 1f;
 
     }
@@ -119,10 +108,13 @@ public class UIManager : MonoBehaviour
     }
     public void RestartLevel()
     {
+     
+
         SoundEffectManager.Play("Button");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
         Time.timeScale = 1f;
 
 
@@ -146,6 +138,9 @@ public class UIManager : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         SoundEffectManager.Stop();
 
         //SoundEffectManager.Play("BGS");
@@ -160,7 +155,29 @@ public class UIManager : MonoBehaviour
         SoundEffectManager.Play("BGS");
 
     }
-   
+
+    private void HandlePlayerDeath()
+    {
+        if (monsterActivation != null)
+        {
+            Debug.Log("Player died → resetting monsters.");
+            monsterActivation.onActivate();
+        }
+        else
+        {
+            Debug.LogWarning("MonsterActivation reference missing in UIManager!");
+        }
+    }
+
+    private void OnEnable()
+    {
+        playerHealth.OnPlayerDeath += HandlePlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        playerHealth.OnPlayerDeath -= HandlePlayerDeath;
+    }
 
 
     public void Quit()

@@ -16,12 +16,10 @@ MonoBehaviour:
   npcPortrait: {fileID: 2076779941, guid: 200e4a92eb85c4a4bb0ccee489982b0f, type: 3}
   npcDialogueLines:
   - Wow! a check point.
-  - In this realm you may encounter...
+  - Be careful though
+  - You may encounter-
   - Strange beings...
-  - 'Here''s a tip:'
-  - if you hold "Left Shift" you will run faster
-  - Goodluck
-  autoProgressLines: 010101010101
+  autoProgressLines: 01010101
   autoProgressDelay: 1
   typingSpeed: 0.035
   voiceSound: {fileID: 0}
