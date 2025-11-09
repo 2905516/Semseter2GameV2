@@ -76,6 +76,7 @@ public class playerMovement : MonoBehaviour
     private float verticalInput;
 
     private Vector3 _moveDirection;
+    private Vector3 nMoveDirection;
     Vector3 moveDirection2;
     Vector3 moveDirection;
 
@@ -109,6 +110,7 @@ public class playerMovement : MonoBehaviour
         
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        animator = GetComponent<Animator>();
 
         PlayerInput = new PlayerInput();
         input = PlayerInput.OnFoot;
@@ -125,6 +127,7 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         _moveDirection = move.action.ReadValue<Vector2>();
+        nMoveDirection = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.y);
 
         //ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
@@ -150,7 +153,21 @@ public class playerMovement : MonoBehaviour
 
         }
 
- 
+        if (nMoveDirection == Vector3.zero)
+        {
+            //Idle
+
+            animator.SetFloat("Move", 0);
+
+        }
+        else
+        {
+            //Walk
+
+            animator.SetFloat("Move", 1);
+
+        }
+
         if (input.Attack.IsPressed())
         {
             Attack();
@@ -341,12 +358,30 @@ public class playerMovement : MonoBehaviour
         if (grounded && isMoving)
         {
             if (!playingFootsteps)
+            {
+                //play animation
+               // animator.SetFloat("Move", 1);
+
+
+                //play footsteps
                 StartFootsteps();
+
+            }    
         }
         else
         {
             if (playingFootsteps)
+            {
+                //stop animation
+               // animator.SetFloat("Move", 0);
+
+
+                //stop footsteps
                 StopFootsteps();
+
+
+            }
+
         }
         // ------------------------------------------
     }
