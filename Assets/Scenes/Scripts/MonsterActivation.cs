@@ -17,10 +17,22 @@ public class MonsterActivation : MonoBehaviour
     public GameObject monsterAlive4;
     public GameObject monsterAlive5;
 
+    public Vector3 savedPosition1;
+    public Vector3 savedPosition2;
+    public Vector3 savedPosition3;
+    public Vector3 savedPosition4;
+    public Vector3 savedPosition5;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        savedPosition1 = monsterStatue1.transform.position;
+        savedPosition2 = monsterStatue2.transform.position;
+        savedPosition3 = monsterStatue3.transform.position;
+        savedPosition4 = monsterStatue4.transform.position;
+        savedPosition5 = monsterStatue5.transform.position;
+
         onActivate();
    
 
@@ -78,7 +90,11 @@ public class MonsterActivation : MonoBehaviour
         monsterStatue4.SetActive(false);
         monsterStatue5.SetActive(false);
 
-
+        monsterAlive1.transform.position = savedPosition1;
+        monsterAlive2.transform.position = savedPosition2;
+        monsterAlive3.transform.position = savedPosition3;
+        monsterAlive4.transform.position = savedPosition4;
+        monsterAlive5.transform.position = savedPosition5;
 
         monsterAlive1.SetActive(false);
         monsterAlive2.SetActive(false);
